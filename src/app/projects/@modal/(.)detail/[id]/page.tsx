@@ -8,15 +8,15 @@ export default async function DetailProjectPage(props: any) {
   console.log(projects);
   return (
     <Modal>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 border p-2 md:grid-cols-2 sm:grid-cols-1 vsm:grid-cols-1">
         <div>
           <img src={projects.data.image} alt="" />
         </div>
-        <div className="bg-white p-4 px-6 border-2 border-red-700">
-          <div className="border-2 border-orange-700 text-center">
-            <h3>{projects.data.title}</h3>
+        <div className="bg-white p-4 px-6 border ml-2 shadow-inherit">
+          <div className="border py-2 text-center">
+            <h3 className="text-base uppercase">{projects.data.title}</h3>
           </div>
-          <div>
+          <div className="border text-justify mt-2">
             <p>{projects.data.description}</p>
           </div>
         </div>

@@ -1,38 +1,77 @@
-const people = [
-  {
-    name: 'Leslie Alexander',
-    role: 'Co-Founder / CEO',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  // More people...
-]
+"use client";
 
-export default function Example() {
+import Image from "next/image";
+import { NextPage } from "next";
+import React, { useState, useEffect } from "react";
+
+const RandomUsersPage: NextPage = () => {
+  const [userList, setUserList] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://randomuser.me/api/?results=8");
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await response.json();
+        setUserList(data.results);
+      } catch (error) {
+        setError("Failed to fetch user data");
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="bg-white py-24 sm:py-32">
-      <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our leadership</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae ullamcorper
-            suspendisse.
-          </p>
+    <div>
+      <div className="container border-2 px-4">
+        <div className="py-4 px-8 bg-slate-900 rounded-t-3xl">
+          <h2 className="text-3xl font-bold text-white text-center">
+            Our Teams
+          </h2>
         </div>
-        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
-          {people.map((person) => (
-            <li key={person.name}>
-              <div className="flex items-center gap-x-6">
-                <img className="h-16 w-16 rounded-full" src={person.imageUrl} alt="" />
-                <div>
-                  <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
-                  <p className="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
+        <div className="rounded-b-3xl bg-slate-500">
+          {error && <p>{error}</p>}
+          {userList.length > 0 && (
+            <div className="lg:gap-xl-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4 p-4">
+              {userList.map((user: any, index: number) => (
+                <div
+                  key={index}
+                  className="border p-4 rounded-2xl border-dark bg-dark"
+                >
+                  <img
+                    className="rounded-t-lg"
+                    width={300}
+                    height={200}
+                    src={user.picture.large}
+                    alt="avatar"
+                  />
+                  <div className="border rounded-b-lg text-center bg-slate-700 z-10 text-white">
+                    <h5 className="text-lg font-medium">
+                      {user.name.title} {user.name.first} {user.name.last}
+                    </h5>
+                    <hr />
+                    <p>{user.gender}</p>
+                    <hr />
+                    <p>{user.email}</p>
+                    <hr />
+                    <p>{user.phone}</p>
+                    <hr />
+                    <p>{user.location.city}</p>
+                    <hr />
+                    <p>{user.location.country}</p>
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default RandomUsersPage;
