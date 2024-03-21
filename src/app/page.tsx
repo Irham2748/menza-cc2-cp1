@@ -1,12 +1,13 @@
-import PersonalOverview from "./personal_overview/page";
+"use client";
 import HeroSection from "./hero_section/page";
+import CompanyOverview from "./company_overview/page";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <hr className="border border-red-500"/>
-      <PersonalOverview />
+      <hr />
+      <CompanyOverview />
     </>
   );
 }

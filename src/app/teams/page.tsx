@@ -26,51 +26,47 @@ const RandomUsersPage: NextPage = () => {
   }, []);
 
   return (
-    <div>
-      <div className="container border-2 px-4">
-        <div className="py-4 px-8 bg-slate-900 rounded-t-3xl">
-          <h2 className="text-3xl font-bold text-white text-center">
+    <section>
+        <div className="flex flex-wrap justify-center">
+          <h2 className="text-3xl font-bold text-dark text-center mx-auto mt-4">
             Our Teams
           </h2>
-        </div>
-        <div className="rounded-b-3xl bg-slate-500">
-          {error && <p>{error}</p>}
-          {userList.length > 0 && (
-            <div className="lg:gap-xl-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4 p-4">
-              {userList.map((user: any, index: number) => (
-                <div
-                  key={index}
-                  className="border p-4 rounded-2xl border-dark bg-dark"
-                >
-                  <img
-                    className="rounded-t-lg"
-                    width={300}
-                    height={200}
-                    src={user.picture.large}
-                    alt="avatar"
-                  />
-                  <div className="border rounded-b-lg text-center bg-slate-700 z-10 text-white">
-                    <h5 className="text-lg font-medium">
-                      {user.name.title} {user.name.first} {user.name.last}
-                    </h5>
-                    <hr />
-                    <p>{user.gender}</p>
-                    <hr />
-                    <p>{user.email}</p>
-                    <hr />
-                    <p>{user.phone}</p>
-                    <hr />
-                    <p>{user.location.city}</p>
-                    <hr />
-                    <p>{user.location.country}</p>
-                  </div>
+        {error && <p>{error}</p>}
+        {userList.length > 0 && (
+          <div className="lg:gap-xl-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4 p-4">
+            {userList.map((user: any, index: number) => (
+              <div
+                key={index}
+                className="border p-4 rounded-2xl border-dark bg-dark"
+              >
+                <img
+                  className="rounded-t-lg"
+                  width={300}
+                  height={200}
+                  src={user.picture.large}
+                  alt="avatar"
+                />
+                <div className="border rounded-b-lg text-center bg-slate-700 z-10 text-white">
+                  <h5 className="text-lg font-medium">
+                    {user.name.title} {user.name.first} {user.name.last}
+                  </h5>
+                  <hr />
+                  <p>{user.gender}</p>
+                  <hr />
+                  <p>{user.email}</p>
+                  <hr />
+                  <p>{user.phone}</p>
+                  <hr />
+                  <p>{user.location.city}</p>
+                  <hr />
+                  <p>{user.location.country}</p>
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 

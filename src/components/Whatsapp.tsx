@@ -12,6 +12,6 @@ export default function WhatsappButton ({ phoneNumber, message }: WhatsappProps)
   };
 
   return (
-    <button className="py-3 px-8 bg-green-400 text-white font-semibold rounded-full hover:bg-green-600" onClick={handleClick}>Hubungi via WhatsApp</button>
+    <button onClick={handleClick}>Hubungi via WhatsApp</button>
   );
 };

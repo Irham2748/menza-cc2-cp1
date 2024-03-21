@@ -2,9 +2,21 @@ export const images = {
     remotePatterns: [
         {
             protocol: 'https',
-            hostname: 's3.amazonaws.com',
+            hostname: 'media.istockphoto.com',
             port: '',
-            pathname: '/my-bucket/**',
+            pathname: '/**',
+        },
+        {
+            protocol: 'https',
+            hostname: 'plus.unsplash.com',
+            port: '',
+            pathname: '/**',
+        },
+        {
+            protocol: 'https',
+            hostname: 'images.unsplash.com',
+            port: '',
+            pathname: '/**',
         },
     ],
 };

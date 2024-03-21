@@ -23,6 +23,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       screens: {
+        xsm: "0",
+        // => @media (min-width: 0px) { ... }
         vsm: "320px",
         // => @media (min-width: 320px) { ... }
         sm: "640px",
@@ -40,6 +42,10 @@ const config: Config = {
         "2xl": "1536px",
         // => @media (min-width: 1536px) { ... }
       },
+       fontFamily: {
+        'dmserif': ['DM Serif', 'serif'],
+        'com': ['Comfortaa', 'cursive'],
+      }
     },
   },
   plugins: [],
