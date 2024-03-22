@@ -34,7 +34,7 @@ export default function HeroSection() {
             </svg>
           </Link>
           <Link
-            href="/projects"
+            href="/products"
             className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-dark hover:text-white focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >
             Go To Our Products

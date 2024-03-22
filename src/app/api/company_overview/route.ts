@@ -25,12 +25,12 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (id) {
-    const detailProject = data.find((project) => project.id === Number(id));
-    if (detailProject) {
+    const detailCompany = data.find((company) => company.id === Number(id));
+    if (detailCompany) {
       return NextResponse.json({
         status: 200,
         message: "Success",
-        data: detailProject,
+        data: detailCompany,
       });
     }
     return NextResponse.json({

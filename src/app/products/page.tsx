@@ -8,17 +8,17 @@ type ProductsPageProps = {
   };
 };
 
-export default async function ProjectPage(props: ProductsPageProps) {
-  const projects = await getData("http://localhost:3000/api/projects");
-  console.log(projects);
+export default async function ProductsPage(props: ProductsPageProps) {
+  const products = await getData("http://localhost:3000/api/products");
+  console.log(products);
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="flex flex-wrap gap-4 justify-center content-center py-3 w-full">
-        {projects.data.length > 0 &&
-          projects.data.map((project: any) => (
+        {products.data.length > 0 &&
+          products.data.map((project: any) => (
             <Link
               key={project.id}
-              href={`/projects/detail/${project.id}`}
+              href={`/products/detail/${project.id}`}
               className="max-w-sm rounded overflow-hidden shadow-lg"
             >
               <Image

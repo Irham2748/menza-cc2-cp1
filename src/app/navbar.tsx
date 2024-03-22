@@ -17,7 +17,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <Link href="/" className="text-white font-bold">
+                <Link href="/hero_section" className="text-white font-bold">
                   MENZA BARBER & COFFE
                 </Link>
               </div>
@@ -37,8 +37,8 @@ export default function Navbar() {
                   About Us
                 </Link>
                 <Link
-                  href="/projects"
-                  className={`${pathName === "/projects" ? "bg-white text-black" : "text-white hover:bg-white hover:text-black"}} hover:text-black rounded-lg p-2`}
+                  href="/products"
+                  className={`${pathName === "/products" ? "bg-white text-black" : "text-white hover:bg-white hover:text-black"}} hover:text-black rounded-lg p-2`}
                 >
                   Products
                 </Link>

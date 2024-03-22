@@ -2,12 +2,12 @@ import { getData } from "@/services/products";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-const Modal = dynamic(() => import('@/components/core/Modal'))
+const Modal = dynamic(() => import("@/components/core/Modal"));
 
 export default async function DetailProductPage(props: any) {
   const { params } = props;
   const products = await getData(
-    "http://localhost:3000/api/projects/?id=" + params.id
+    "http://localhost:3000/api/products/?id=" + params.id
   );
   console.log(products);
   return (
