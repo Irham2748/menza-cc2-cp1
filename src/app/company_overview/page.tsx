@@ -1,6 +1,7 @@
 'use client'
 import { getData } from "@/services/company_overview";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default async function CompanyOverview() {
   const router = useRouter()
@@ -15,10 +16,13 @@ export default async function CompanyOverview() {
           personals.data.map((personal: any) => (
             <div key={personal.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow rounded-2xl hover:shadow-xl hover:shadow-black/30">
               <div className="h-96 w-72 vsm:mt-10">
-                <img
+                <Image
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                   src={personal.image}
                   alt="personal"
+                  width={500}
+                  height={500}
+                  loading="lazy"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>

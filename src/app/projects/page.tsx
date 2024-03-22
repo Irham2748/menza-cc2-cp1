@@ -27,6 +27,7 @@ export default async function ProjectPage(props: ProductsPageProps) {
                 alt="products image"
                 width={500}
                 height={500}
+                loading="lazy"
               />
               <div className="px-2 pb-2 rounded-lg">
                 <h5 className="text-lg tracking-tight text-dark dark:text-white truncate text-center">

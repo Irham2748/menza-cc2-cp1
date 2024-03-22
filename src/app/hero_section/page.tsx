@@ -53,10 +53,13 @@ export default function HeroSection() {
           </Link>
         </div>
         <div className="py-5 rounded-xl lg:mt-0 lg:col-span-5 lg:flex">
-          <img
+          <Image
             className="w-full h-80 rounded-xl"
             src="https://images.unsplash.com/photo-1566897819059-db42e135fa69?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvZmZlJTIwc2hvcHxlbnwwfHwwfHx8MA%3D%3D"
+            width={500}
+            height={500}
             alt="mockup"
+            loading="lazy"
           />
         </div>
       </div>

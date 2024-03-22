@@ -39,12 +39,13 @@ const RandomUsersPage: NextPage = () => {
                 key={index}
                 className="border p-4 rounded-2xl border-dark bg-dark"
               >
-                <img
+                <Image
                   className="rounded-t-lg"
                   width={300}
                   height={200}
                   src={user.picture.large}
                   alt="avatar"
+                  loading="lazy"
                 />
                 <div className="border rounded-b-lg text-center bg-slate-700 z-10 text-white">
                   <h5 className="text-lg font-medium">
