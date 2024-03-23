@@ -2,7 +2,7 @@
 export const getData = async (url: string) => {
   // const res = await fetch("https://fakestoreapi.com/products");
   const res = await fetch(url, {
-    cache: "no-cache",
+    cache: "force-cache",
     next: { revalidate: 10, },
   });
 

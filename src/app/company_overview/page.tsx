@@ -11,7 +11,7 @@ export default function CompanyOverview() {
   );
   console.log(data);
 const companies = {
-  data: data?.data,
+  data: data?.data || [],
 }
 
   return (
