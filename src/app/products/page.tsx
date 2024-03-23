@@ -1,6 +1,8 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
-import { getData } from "@/services/products";
+// import { getData } from "@/services/products";
+import useSWR from "swr";
 
 type ProductsPageProps = {
   params: {
@@ -8,22 +10,31 @@ type ProductsPageProps = {
   };
 };
 
-export default async function ProductsPage(props: ProductsPageProps) {
-  const products = await getData("http://localhost:3000/api/products");
-  console.log(products);
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+export default function ProductsPage(props: ProductsPageProps) {
+  const { data } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/products`,
+    fetcher,
+  );
+  console.log(data)
+
+  const products = {
+    data: data?.data || [],
+  };
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="flex flex-wrap gap-4 justify-center content-center py-3 w-full">
-        {products.data.length > 0 &&
-          products.data.map((project: any) => (
+        {products.data?.length > 0 &&
+          products.data?.map((product: any) => (
             <Link
-              key={project.id}
-              href={`/products/detail/${project.id}`}
+              key={product.id}
+              href={`/products/detail/${product.id}`}
               className="max-w-sm rounded overflow-hidden shadow-lg"
             >
               <Image
                 className="object-cover h-auto w-full"
-                src={project.image}
+                src={product.image}
                 alt="products image"
                 width={500}
                 height={500}
@@ -31,7 +42,7 @@ export default async function ProductsPage(props: ProductsPageProps) {
               />
               <div className="px-2 pb-2 rounded-lg">
                 <h5 className="text-lg tracking-tight text-dark dark:text-white truncate text-center">
-                  {project.title}
+                  {product.title}
                 </h5>
 
                 <button

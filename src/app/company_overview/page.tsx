@@ -1,18 +1,28 @@
-'use client'
-import { getData } from "@/services/company_overview";
+"use client";
+// import { getData } from "@/services/company_overview";
 import Image from "next/image";
+import useSWR from "swr";
 
-export default async function CompanyOverview() {
-  const companies = await getData(
-    "http://localhost:3000/api/company_overview"
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export default function CompanyOverview() {
+  const { data } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/company_overview`,
+    fetcher,
   );
-  console.log(companies);
+  console.log(data);
+const companies = {
+  data: data?.data,
+}
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-dark">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {companies.data.length > 0 &&
-          companies.data.map((company: any) => (
-            <div key={company.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow rounded-2xl hover:shadow-xl hover:shadow-black/30">
+        {companies.data?.length > 0 &&
+          companies.data?.map((company: any) => (
+            <div
+              key={company.id}
+              className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow rounded-2xl hover:shadow-xl hover:shadow-black/30"
+            >
               <div className="h-96 w-72 vsm:mt-10">
                 <Image
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
