@@ -46,8 +46,8 @@ const data = [
   },
   {
     id: 8,
-    title: "Expresso",
-    image: "/images/products/3.png",
+    title: "Lemon Mojito",
+    image: "https://media.istockphoto.com/id/587953028/photo/homemade-boozy-bourbon-whiskey-smash.webp?b=1&s=170667a&w=0&k=20&c=QfP3fpkWLFCfQ3cpgVhU4KXjRUmzrpA_586CUQ9fCBw=",
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
 ];
@@ -56,12 +56,12 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (id) {
-    const detailProject = data.find((project) => project.id === Number(id));
-    if (detailProject) {
+    const detailProduct = data.find((product) => product.id === Number(id));
+    if (detailProduct) {
       return NextResponse.json({
         status: 200,
         message: "Success",
-        data: detailProject,
+        data: detailProduct,
       });
     }
     return NextResponse.json({
