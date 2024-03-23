@@ -1,5 +1,4 @@
 "use client";
-// import { getData } from "@/services/company_overview";
 import Image from "next/image";
 import useSWR from "swr";
 
@@ -11,7 +10,7 @@ export default function CompanyOverview() {
   );
   console.log(data);
 const companies = {
-  data: data?.data || [],
+  data: data?.data,
 }
 
   return (

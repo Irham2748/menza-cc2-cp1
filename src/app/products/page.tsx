@@ -1,7 +1,6 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-// import { getData } from "@/services/products";
 import useSWR from "swr";
 
 type ProductsPageProps = {
@@ -20,7 +19,7 @@ export default function ProductsPage(props: ProductsPageProps) {
   console.log(data)
 
   const products = {
-    data: data?.data || [],
+    data: data?.data,
   };
   return (
     <section className="bg-white dark:bg-gray-900">
