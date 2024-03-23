@@ -103,10 +103,10 @@ export default function Navbar() {
                   About Me
                 </Link>
                 <Link
-                  href="/projects"
-                  className={`${pathName === "/projects" ? "bg-white text-black" : "text-white hover:bg-white hover:text-black"}} hover:text-black rounded-lg p-2 block`}
+                  href="/products"
+                  className={`${pathName === "/products" ? "bg-white text-black" : "text-white hover:bg-white hover:text-black"}} hover:text-black rounded-lg p-2 block`}
                 >
-                  Projects
+                  Products
                 </Link>
                 <Link
                   href="/teams"
